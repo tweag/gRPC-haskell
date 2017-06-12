@@ -3,7 +3,7 @@ Added by Olivier
 
 The commands that worked for me are:
 ```bash
-$ nix-shell release.nix -A grpc-haskell.env
+$ nix-env -f release.nix -iA grpc-haskell
 $ cabal configure --with-gcc=clang --enable-tests --extra-include-dirs=/nix/store/ajvhxxnnx0xiajn0n4vls7v3v29bbmjm-grpc-1.2.0-e2cfe9d/include --extra-lib-dirs=/nix/store/ajvhxxnnx0xiajn0n4vls7v3v29bbmjm-grpc-1.2.0-e2cfe9d/lib --flags=with-examples && cabal build
 ```
 
