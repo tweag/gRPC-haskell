@@ -228,8 +228,9 @@ stopServer Server{ unsafeServer = s, .. } = do
           grpcDebug "Server shutdown: All forks cleaned up."
 
 -- Uses 'bracket' to safely start and stop a server, even if exceptions occur.
-withServer :: GRPC -> ServerConfig -> (Server -> IO a) -> IO a
-withServer grpc cfg = bracket (fst <$> startServer grpc cfg) stopServer
+withServer :: GRPC -> ServerConfig -> (Server -> Port -> IO a) -> IO a
+withServer grpc cfg =
+  bracket (startServer grpc cfg) (stopServer . fst) . uncurry
 
 -- | Less precisely-typed registration function used in
 -- 'serverRegisterMethodNormal', 'serverRegisterMethodServerStreaming',
