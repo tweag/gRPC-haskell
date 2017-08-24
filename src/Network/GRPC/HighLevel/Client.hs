@@ -15,6 +15,7 @@ module Network.GRPC.HighLevel.Client
   , LL.Client
 
   , ServiceClient
+  , ClientError(..)
   , ClientRequest(..)
   , ClientResult(..)
 --  , ClientResponse, response, initMD, trailMD, rspCode, details
